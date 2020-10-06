@@ -1,19 +1,19 @@
 <!-- Please update value in the {}  -->
 
-<h1 align="center">{Your project name}</h1>
+<h1 align="center">Twitter Clone</h1>
 
 <div align="center">
-   Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
+   Solution for a challenge from  <a href="https://devchallenges.io/challenges/rleoQc34THclWx1cFFKH" target="_blank">Tweeter - Twitter Clone</a>.
 </div>
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
-      Demo
+    <a href="#">
+      👷 In Progress
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
-      Solution
+    <a href="#">
+      👷 Solution in Progress
     </a>
     <span> | </span>
     <a href="https://devchallenges.io/challenges/rleoQc34THclWx1cFFKH">
@@ -51,8 +51,11 @@ Introduce your projects by taking a screenshot or a gif. Try to tell visitors a 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 - [React](https://reactjs.org/)
-- [Vue.js](https://vuejs.org/)
-- [Tailwind](https://tailwindcss.com/)
+- [Next.js](https://nextjs.org/)
+- [GraphQL](https://graphql.org/)
+- [Styled Components](https://styled-components.com/)
+- [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
+- [MongoDB](https://www.mongodb.com/)
 
 ## Features
 
