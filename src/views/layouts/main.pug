@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    link(rel="stylesheet", href="https://necolas.github.io/normalize.css/8.0.1/normalize.css")
+    link(rel="stylesheet", href="/public/css/styles.css")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@500&display=swap")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+
+  body
+    header.header
+      nav.nav
+        img.nav__logo(src="/public/img/logo.png", alt="")
+        .nav__links
+          a.nav__link.nav__link--active(href="/") Home
+          a.nav__link(href="/explore") Explore
+          a.nav__link(href="/bookmarks") Bookmarks
+        .nav__profile
+          img.profile__img(src="https://cdn.stocksnap.io/img-thumbs/960w/smiling-woman_W6GFOSFAXA.jpg", alt="")
+          span.profile__name Xanthe Neal
+      block hero
+    block content
+    script(src="/public/js/main.js")

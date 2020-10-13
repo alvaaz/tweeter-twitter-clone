@@ -1,0 +1,68 @@
+extends layouts/main.pug
+
+block content
+  main.main
+    form.card(action="/tweet/add" method="POST" enctype="multipart/form-data")
+      h5.card__title Tweet something
+      .card__content
+        img.content__img(src="https://cdn.stocksnap.io/img-thumbs/960w/smiling-woman_W6GFOSFAXA.jpg", alt="" name="image")
+        textarea.content__txt(name="content", rows="5" placeholder="What's happening?")
+      .card__footer
+        label(for="file-input")
+          include /public/img/image-outline.svg
+        input.footer__file(type="file" name="image" id="file-input")
+        .custom-select(style='width:200px;')
+          select(name="visibility")
+            option(value='0') Everyone can reply
+            option(value='1') People you follow
+        .dropdown
+          include /public/img/globe-2-outline.svg
+          span.dropdown-toggle(name="visibility") Everyone can reply
+          .dropdown__menu
+            h6.menu__title Who can reply?
+            p.menu__desc Choose who can reply to this Tweet.
+            a.menu__item
+              include /public/img/globe-2-outline.svg
+              | Everyone
+            a.menu__item
+              include /public/img/people-outline.svg
+              | People you follow
+        button.button-primary Tweet
+  aside.aside
+    .card
+      h5.card__title Trends for you
+
+  script.
+    const dropdowns = document.querySelectorAll(".dropdown-toggle");
+    function openDropdown(event){
+      event.target.parentNode.classList.add("open");
+    }
+
+    function resetDropdowns(){
+      var element = document.querySelector(".dropdown.open");
+      if(element){ element.classList.remove("open"); }
+    }
+
+    function documentHandler(e){
+      resetDropdowns();
+      console.log(e)
+    };
+    if(dropdowns.length>0){
+      dropdowns.forEach(el=>{
+        el.addEventListener('click',function(e){
+          const isActive = e.target.parentNode.classList.contains("open");
+          const element = document.querySelector(".dropdown.open");
+          if(element) {
+            element.classList.remove("open");
+          }
+          resetDropdowns();
+          if (isActive) {
+            return;
+          }
+          e.stopPropagation();
+          e.preventDefault();
+          openDropdown(e);
+          document.addEventListener('click', documentHandler, false);
+        }, false);
+      })
+    }
