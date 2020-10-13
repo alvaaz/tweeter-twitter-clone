@@ -1,0 +1,294 @@
+.custom-select {
+  position: relative;
+  font-family: Arial; }
+
+.custom-select select {
+  display: none; }
+
+.select-selected {
+  cursor: pointer;
+  user-select: none;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #2f80ed;
+  margin-left: 8px; }
+
+/*style the items (options), including the selected item:*/
+.select-items div {
+  color: #4f4f4f;
+  padding: 10px 12px;
+  cursor: pointer;
+  user-select: none;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  border-radius: 8px; }
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  top: calc(100% + 11px);
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 12px; }
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none; }
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1); }
+
+body {
+  background-color: #fafafb;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px; }
+
+.header {
+  grid-column: 1 / last-line; }
+
+.nav {
+  display: flex;
+  height: 68px;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: white;
+  margin-bottom: 24px; }
+  .nav__profile {
+    display: flex;
+    align-items: center; }
+  .nav__logo {
+    object-fit: contain;
+    width: 100px; }
+  .nav__links {
+    display: flex;
+    height: 100%; }
+  .nav__link {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 68px;
+    letter-spacing: -0.035em;
+    text-decoration: none;
+    color: #828282;
+    margin-left: 4rem;
+    align-items: center; }
+    .nav__link--active {
+      color: #2f80ed;
+      border-bottom: 2px solid #2f80ed; }
+
+.header__hero {
+  width: 100%;
+  height: 290px;
+  object-fit: cover; }
+
+.profile__name {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.035em; }
+
+.profile__img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 4px; }
+
+.header__main {
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  position: relative;
+  top: -100px;
+  width: 1073px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex; }
+  .header__main .profile__info {
+    flex-grow: 1; }
+  .header__main .profile__img {
+    width: 152px;
+    height: 152px;
+    border-radius: 8px;
+    object-fit: cover;
+    position: relative;
+    top: -60px;
+    border: 4px solid white; }
+  .header__main .profile__name {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: -0.035em;
+    color: #333333;
+    display: inline-block; }
+  .header__main .profile__metric {
+    display: inline-block; }
+    .header__main .profile__metric .number {
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: -0.035em;
+      color: #333333;
+      margin-right: 4px;
+      margin-left: 24px; }
+    .header__main .profile__metric .title {
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: -0.035em;
+      color: #828282; }
+  .header__main .profile__description {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.035em;
+    color: #828282;
+    max-width: 427px; }
+
+.button {
+  border-radius: 4px;
+  background: #2f80ed;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.035em;
+  color: white;
+  border: none;
+  align-self: center;
+  cursor: pointer;
+  padding: 8px; }
+
+.aside {
+  grid-column: 10 / last-line; }
+
+.card {
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 10px 20px; }
+  .card:first-child {
+    grid-column: 1 / 10; }
+  .card__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.035em;
+    color: #4f4f4f;
+    border-bottom: 2px solid #e0e0e0;
+    margin-top: 0;
+    padding-bottom: 8px;
+    margin-bottom: 8px; }
+  .card__content {
+    display: flex; }
+  .card__footer {
+    display: flex;
+    justify-content: space-between; }
+  .card .footer__file {
+    display: none; }
+  .card .content__img {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    margin-right: 12px; }
+  .card .content__txt {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    border: none;
+    outline: none;
+    resize: none;
+    width: 100%; }
+
+.main {
+  grid-column: 1 / 10; }
+
+.button-primary {
+  background: #2f80ed;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  cursor: pointer;
+  padding: 8px 24px; }
+
+.icon {
+  fill: #2f80ed;
+  width: 20px;
+  height: 20px; }
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none; }
+  .dropdown.open .dropdown__menu {
+    display: block; }
+  .dropdown-toggle {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    color: #2f80ed;
+    margin-left: 8px; }
+  .dropdown__menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    display: none;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    padding: 12px;
+    width: 234px; }
+  .dropdown .menu__item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    color: #4f4f4f;
+    cursor: pointer;
+    border-radius: 8px; }
+    .dropdown .menu__item svg {
+      margin-right: 4px; }
+    .dropdown .menu__item:hover {
+      background-color: #f2f2f2; }
+  .dropdown .menu__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.035em;
+    color: #4f4f4f;
+    margin: 0; }
+  .dropdown .menu__desc {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    color: #828282;
+    margin: 0 0 16px 0; }
