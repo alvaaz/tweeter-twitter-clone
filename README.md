@@ -50,12 +50,10 @@ Introduce your projects by taking a screenshot or a gif. Try to tell visitors a 
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
-- [React](https://reactjs.org/)
-- [Next.js](https://nextjs.org/)
-- [GraphQL](https://graphql.org/)
-- [Styled Components](https://styled-components.com/)
-- [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
-- [MongoDB](https://www.mongodb.com/)
+- [Node](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [Pug](https://pugjs.org/)
+- [SCSS](https://sass-lang.com/)
 
 ## Features
 
