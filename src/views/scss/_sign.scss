@@ -1,0 +1,122 @@
+
+.sign-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.signin {
+  border: 1px solid #BDBDBD;
+  border-radius: 24px;
+  padding: 48px 58px;
+  width: 480px;
+}
+.signin__title {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  color: #333333;
+  margin: 0;
+  width: 80%;
+}
+.signin__description {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #333333;
+  margin-bottom: 2rem;
+}
+
+.field {
+  border: 1px solid #BDBDBD;
+  box-sizing: border-box;
+  border-radius: 8px;
+  display: flex;
+  position: relative;
+  i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1rem;
+    color: #828282;
+  }
+  input {
+    padding: .712rem 0rem .712rem 3rem;
+    border: none;
+    background-color: transparent;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+  }
+  &:first-of-type {
+    margin-bottom: 1rem;
+  }
+  &:last-of-type {
+    margin-bottom: 2rem;
+  }
+}
+
+.sign-button {
+  background: #2F80ED;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  padding: .6125rem 0px;
+  color: white;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.signin__other {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+
+}
+.signin__logos {
+  display: flex;
+  justify-content: center;
+  a {
+    color: #828282;
+    font-size: 1.5rem;
+    border: 1px solid #828282;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-right: .5rem;
+    &:hover {
+      color: darken(#828282, 5%);
+      border-color: darken(#828282, 5%);
+    }
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}
+.signin__login {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #828282;
+  text-align: center;
+}

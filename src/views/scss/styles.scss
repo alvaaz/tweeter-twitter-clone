@@ -1,4 +1,9 @@
 @import "select";
+@import "sign";
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   background-color: #fafafb;
@@ -9,6 +14,8 @@ body {
 
 .header {
   grid-column: 1 / last-line;
+  position: sticky;
+  top: 0;
 }
 
 .nav {
@@ -62,6 +69,13 @@ body {
     font-size: 12px;
     line-height: 16px;
     letter-spacing: -0.035em;
+  }
+  &__image {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin: 0px 1rem 0px 0px;
   }
   &__img {
     width: 32px;
@@ -151,7 +165,7 @@ body {
 }
 
 .aside {
-  grid-column: 10 / last-line;
+  grid-column: 10 / 12;
 }
 
 .card {
@@ -204,7 +218,7 @@ body {
 }
 
 .main {
-  grid-column: 1 / 10;
+  grid-column: 2 / 10;
 }
 
 .button-primary {
@@ -288,5 +302,232 @@ body {
     line-height: 16px;
     color: #828282;
     margin: 0 0 16px 0;
+  }
+}
+
+.feed {
+  grid-column: 2 / 10;
+}
+
+.tweet {
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 10px 20px;
+  margin-bottom: 1.5rem;
+  &__header {
+    display: flex;
+    .profile__image {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .profile__date {
+      font-family: "Noto Sans", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #BDBDBD;
+      margin: 0px;
+    }
+    .profile__name {
+      font-family: "Poppins", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: #000000;
+      margin: 0px;
+    }
+  }
+  &__body {
+    .content {
+      font-family: "Noto Sans", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 22px;
+      color: #4F4F4F;
+    }
+  }
+  &__image {
+    width: 100%;
+    border-radius: 8px;
+  }
+  &__footer {
+  }
+  &__statistics {
+    display: flex;
+    justify-content: flex-end;
+    padding: .5rem 0rem;
+    .statistic {
+      font-family: "Noto Sans", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #BDBDBD;
+      text-decoration: none;
+      margin-right: 1rem;
+      transition: .2s color ease-in-out;
+      &:hover {
+        color: darken(#BDBDBD, 10%)
+      }
+    }
+  }
+  &__actions {
+    display: flex;
+    border-top: 1px solid #F2F2F2;
+    border-bottom: 1px solid #F2F2F2;
+    padding: 5px 0px;
+    margin-bottom: .5rem;
+    .action {
+      font-family: "Noto Sans", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      line-height: 19px;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 0px;
+      flex-grow: 1;
+      background-color: #fff;
+      transition: .2s background-color ease-in-out;
+      cursor: pointer;
+      color: #4F4F4F;
+      span {
+        display: flex;
+        align-content: center;
+        i {
+          margin-right: .5rem;
+        }
+      }
+      &:hover {
+        background-color: #F2F2F2;
+      }
+    }
+  }
+  &__reply {
+    display: flex;
+    border-bottom: 1px solid #F2F2F2;
+    padding-bottom: 5px;
+    div {
+      display: flex;
+      align-items: center;
+      background: #FAFAFA;
+      border: 1px solid #F2F2F2;
+      border-radius: 0.5rem;
+      width: 100%;
+      height: 40px;
+      padding: 0px 12px;
+    }
+    i {
+      color: #BDBDBD;
+    }
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+    }
+    .reply__cover {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      margin-right: 1rem;
+      border-radius: 0.5rem;
+    }
+    .reply__textbox {
+      border: none;
+      resize: none;
+      width: 100%;
+      height: 100%;
+      font-family: "Noto Sans", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 40px;
+      outline: none;
+      background-color: transparent;
+    }
+  }
+  &__comments {
+    .comment {
+      padding-top: 1.25rem;
+      display: flex;
+    }
+    .comments__cover {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      margin-right: 1rem;
+      border-radius: 0.5rem;
+    }
+    .comments__single {
+    width: 100%;
+    }
+
+    .comments__wrapper {
+      background: #FAFAFA;
+      border-radius: 8px;
+      padding: 8px 16px;
+    }
+    .comments__author {
+      font-family: "Poppins", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      margin-right: .5rem;
+    }
+    .comments__date {
+      font-family: "Noto Sans", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #BDBDBD;
+    }
+    .comments__content {
+      font-family: "Noto Sans", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 22px;
+      color: #4F4F4F;
+    }
+    .comments__actions {
+      display: flex;
+      align-items: center;
+      button {
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-family: "Noto Sans", sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        color: #BDBDBD;
+        background-color: white;
+        transition: .2s background-color ease-in-out;
+        i {
+          font-size: 1rem;
+        }
+        &:hover {
+          background-color: #F2F2F2;
+        }
+      }
+    }
   }
 }

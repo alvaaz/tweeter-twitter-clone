@@ -9,38 +9,44 @@ export const tweet = {
     res.send("Index image");
   },
   create: (req: Request, res: Response) => {
-    console.log(req.body);
+    console.log(req.body.content)
+    //@ts-ignore
+    // req.file
     const saveTweet = async () => {
-      const imgUrl = helpers.randomNumber();
-      const images = await Tweet.find({ image: imgUrl });
-      if (images.length > 0) {
-        saveTweet();
-      } else {
-        const imageTempPath = req.file.path;
-        const ext = path.extname(req.file.originalname).toLowerCase();
-        const targetPath = path.resolve(`src/public/upload/${imgUrl}${ext}`);
-
-        if (
-          ext === ".png" ||
-          ext === ".jpg" ||
-          ext === ".jpeg" ||
-          ext === ".gif"
-        ) {
-          await fs.rename(imageTempPath, targetPath);
-
-          const newTweet = new Tweet({
-            content: req.body.content,
-            image: imgUrl + ext,
-          });
-          const imageSaved = await newTweet.save();
-          res.send("works");
+      //@ts-ignore
+        const imgUrl = helpers.randomNumber();
+        const images = await Tweet.find({ image: imgUrl });
+        if (images.length > 0) {
+          saveTweet();
         } else {
-          await fs.unlink(imageTempPath);
-          res.status(500).json({ error: "Only images are allowed" });
-        }
-      }
-    };
+          //@ts-ignore
+          const imageTempPath = req.files[0].path
+          //@ts-ignore
+          const ext = path.extname(req.files[0].originalname).toLowerCase();
+          const targetPath = path.resolve(`src/public/upload/${imgUrl}${ext}`);
 
+          if (
+            ext === ".png" ||
+            ext === ".jpg" ||
+            ext === ".jpeg" ||
+            ext === ".gif"
+          ) {
+            await fs.rename(imageTempPath, targetPath);
+
+            const newTweet = new Tweet({
+              content: req.body.content,
+              image: imgUrl + ext,
+            });
+            await newTweet.save();
+            res.send("works");
+          } else {
+            await fs.unlink(imageTempPath);
+            res.status(500).json({ error: "Only images are allowed" });
+          }
+        }
+
+
+    }
     saveTweet();
   },
   like: (req: Request, res: Response) => {

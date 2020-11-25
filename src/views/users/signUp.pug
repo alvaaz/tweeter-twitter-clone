@@ -1,0 +1,26 @@
+extends ../layouts/sign.pug
+
+block content
+  .signin
+    h4.signin__title Join thousands of learners from around the world
+    p.signin__description Master web development by making real-life projects. There are multiple paths for you to choose
+    form(action="/users/signin" method="POST")
+      .field
+        i.material-icons email
+        input(type="email" name="email" placeholder="Email")
+      .field
+        i.material-icons lock
+        input(type="password" name="password" placeholder="Password")
+      button.sign-button Start coding now
+    p.signin__other or continue with these social profile
+    .signin__logos
+      a(href='http://facebook.com/' title='Facebook')
+        i.fab.fa-google
+      a(href='http://facebook.com/' title='Google')
+        i.fab.fa-facebook-square
+      a(href='http://facebook.com/' title='Twitter')
+        i.fab.fa-twitter
+      a(href='http://facebook.com/' title='Github')
+        i.fab.fa-github
+    p.signin__login Already a member?
+      a(href="/users/signin") Login

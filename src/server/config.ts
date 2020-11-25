@@ -22,9 +22,7 @@ export const config = (app: Application) => {
   // Middlewares
   app.use(morgan("dev"));
   app.use(
-    multer({ dest: path.join(__dirname, "../public/upload/temp") }).single(
-      "image"
-    )
+    multer({ dest: path.join(__dirname, "../public/upload/temp") }).any()
   );
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());

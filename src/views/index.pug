@@ -2,7 +2,7 @@ extends layouts/main.pug
 
 block content
   main.main
-    form.card(action="/tweet/add" method="POST" enctype="multipart/form-data")
+    form.card
       h5.card__title Tweet something
       .card__content
         img.content__img(src="https://cdn.stocksnap.io/img-thumbs/960w/smiling-woman_W6GFOSFAXA.jpg", alt="" name="image")
@@ -27,12 +27,121 @@ block content
             a.menu__item
               include /public/img/people-outline.svg
               | People you follow
-        button.button-primary Tweet
+        button.button-primary#newTweet Tweet
   aside.aside
     .card
       h5.card__title Trends for you
+  .feed
+    for tweet in tweets
+      .tweet
+        .tweet__header
+          figure.profile__image
+            img(src="https://cdn.stocksnap.io/img-thumbs/960w/mother-child_1QSVAPCGK5.jpg", alt="")
+          .profile__data
+            p.profile__name Peyton Leyons
+            p.profile__date 24 August at 20:43
+        .tweet__body
+          p.content= tweet.content
+          if tweet.image
+            img(src=`/public/upload/${tweet.image}` class="tweet__image")
+        .tweet__footer
+          .tweet__statistics
+            a(href="#" class="statistic") 449 comments
+            a(href="#" class="statistic") #{tweet.retweets} Retweets
+            a(href="#" class="statistic") 234 Saved
+          .tweet__actions
+            button(class="action")
+              span
+                i.material-icons mode_comment
+                | Comment
+            button(class="action")
+              span
+                i.material-icons loop
+                | Retweet
+            button(class="action")
+              span
+                i.material-icons favorite_border
+                | Like
+            button(class="action")
+              span
+                i.material-icons bookmark_border
+                | Save
+          .tweet__reply
+            img(class="reply__cover" src="https://cdn.stocksnap.io/img-thumbs/960w/mother-child_1QSVAPCGK5.jpg", alt="")
+            div
+              textarea(class="reply__textbox" name="reply", placeholder="Tweet your reply")
+              i.material-icons image
+          .tweet__comments
+            div.comment
+              img(class="comments__cover" src="https://cdn.stocksnap.io/img-thumbs/960w/mother-child_1QSVAPCGK5.jpg", alt="")
+              .comments__single
+                .comments__wrapper
+                  span.comments__author Waqar Bloom
+                  span.comments__date 24 August at 20:43
+                  p.comments__content I’ve seen awe-inspiring things that I thought I’d never be able to explain to another person.
+                .comments__actions
+                  button
+                    i.material-icons favorite_border
+                    | Like
+                  button 12k Likes
+            div.comment
+              img(class="comments__cover" src="https://cdn.stocksnap.io/img-thumbs/960w/mother-child_1QSVAPCGK5.jpg", alt="")
+              .comments__single
+                .comments__wrapper
+                  span.comments__author Waqar Bloom
+                  span.comments__date 24 August at 20:43
+                  p.comments__content I’ve seen awe-inspiring things that I thought I’d never be able to explain to another person.
+                .comments__actions
+                  button
+                    i.material-icons favorite_border
+                    | Like
+                  button 12k Likes
 
   script.
+    const submitButton = document.getElementById('newTweet')
+
+    const content = document.querySelector('.content__txt').value
+    const image = document.getElementById('file-input')
+
+    const tweet = new FormData()
+    tweet.append('file', image.files[0])
+    tweet.append('content', content)
+
+    const getTweets = () => {
+      const options = {
+        method: 'GET'
+      }
+      fetch('/tweet/add', options)
+      .then(
+        response => response.json()
+      )
+      .then(
+        success => console.log(success)
+      )
+      .catch(
+        error => console.log(error)
+      );
+    }
+
+    submitButton.addEventListener('click', (e) => {
+      e.preventDefault()
+      const options = {
+        method: 'POST',
+        body: tweet
+      }
+
+      fetch('/tweet/add', options)
+        .then(
+          response => response.json()
+        )
+        .then(
+          success => console.log(success)
+        )
+        .catch(
+          error => console.log(error)
+        );
+    })
+
     const dropdowns = document.querySelectorAll(".dropdown-toggle");
     function openDropdown(event){
       event.target.parentNode.classList.add("open");

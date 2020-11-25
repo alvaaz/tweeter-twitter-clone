@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { home, tweet } from "../controllers";
+import { home, tweet, users } from "../controllers";
 
 export const router = Router();
 
@@ -13,3 +13,9 @@ router.post("/tweet/add", tweet.create);
 router.post("/tweet/:tweet_id/like", tweet.like);
 router.post("/tweet/:tweet_id/comment", tweet.comment);
 router.delete("/tweet/:tweet_id", tweet.remove);
+
+router.get("/users/signup", users.renderSignUpForm);
+router.post("/users/signup", users.signUp);
+router.get("/users/signin", users.renderSignInForm);
+router.post("/users/signup", users.signIn);
+router.get("/users/logout", users.logout);

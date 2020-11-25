@@ -46,6 +46,118 @@
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1); }
 
+.sign-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; }
+
+.signin {
+  border: 1px solid #BDBDBD;
+  border-radius: 24px;
+  padding: 48px 58px;
+  width: 480px; }
+
+.signin__title {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  color: #333333;
+  margin: 0;
+  width: 80%; }
+
+.signin__description {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #333333;
+  margin-bottom: 2rem; }
+
+.field {
+  border: 1px solid #BDBDBD;
+  box-sizing: border-box;
+  border-radius: 8px;
+  display: flex;
+  position: relative; }
+  .field i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1rem;
+    color: #828282; }
+  .field input {
+    padding: .712rem 0rem .712rem 3rem;
+    border: none;
+    background-color: transparent;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    width: 100%;
+    outline: none; }
+  .field:first-of-type {
+    margin-bottom: 1rem; }
+  .field:last-of-type {
+    margin-bottom: 2rem; }
+
+.sign-button {
+  background: #2F80ED;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  padding: .6125rem 0px;
+  color: white;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer; }
+
+.signin__other {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center; }
+
+.signin__logos {
+  display: flex;
+  justify-content: center; }
+  .signin__logos a {
+    color: #828282;
+    font-size: 1.5rem;
+    border: 1px solid #828282;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-right: .5rem; }
+    .signin__logos a:hover {
+      color: #757575;
+      border-color: #757575; }
+    .signin__logos a:last-child {
+      margin-right: 0px; }
+
+.signin__login {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #828282;
+  text-align: center; }
+
+* {
+  box-sizing: border-box; }
+
 body {
   background-color: #fafafb;
   display: grid;
@@ -53,7 +165,9 @@ body {
   gap: 24px; }
 
 .header {
-  grid-column: 1 / last-line; }
+  grid-column: 1 / last-line;
+  position: sticky;
+  top: 0; }
 
 .nav {
   display: flex;
@@ -98,6 +212,13 @@ body {
   font-size: 12px;
   line-height: 16px;
   letter-spacing: -0.035em; }
+
+.profile__image {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin: 0px 1rem 0px 0px; }
 
 .profile__img {
   width: 32px;
@@ -176,7 +297,7 @@ body {
   padding: 8px; }
 
 .aside {
-  grid-column: 10 / last-line; }
+  grid-column: 10 / 12; }
 
 .card {
   background-color: #fff;
@@ -220,7 +341,7 @@ body {
     width: 100%; }
 
 .main {
-  grid-column: 1 / 10; }
+  grid-column: 2 / 10; }
 
 .button-primary {
   background: #2f80ed;
@@ -292,3 +413,191 @@ body {
     line-height: 16px;
     color: #828282;
     margin: 0 0 16px 0; }
+
+.feed {
+  grid-column: 2 / 10; }
+
+.tweet {
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 10px 20px;
+  margin-bottom: 1.5rem; }
+  .tweet__header {
+    display: flex; }
+    .tweet__header .profile__image {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      overflow: hidden; }
+      .tweet__header .profile__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; }
+    .tweet__header .profile__date {
+      font-family: "Noto Sans", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #BDBDBD;
+      margin: 0px; }
+    .tweet__header .profile__name {
+      font-family: "Poppins", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: #000000;
+      margin: 0px; }
+  .tweet__body .content {
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #4F4F4F; }
+  .tweet__image {
+    width: 100%;
+    border-radius: 8px; }
+  .tweet__statistics {
+    display: flex;
+    justify-content: flex-end;
+    padding: .5rem 0rem; }
+    .tweet__statistics .statistic {
+      font-family: "Noto Sans", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #BDBDBD;
+      text-decoration: none;
+      margin-right: 1rem;
+      transition: .2s color ease-in-out; }
+      .tweet__statistics .statistic:hover {
+        color: #a4a4a4; }
+  .tweet__actions {
+    display: flex;
+    border-top: 1px solid #F2F2F2;
+    border-bottom: 1px solid #F2F2F2;
+    padding: 5px 0px;
+    margin-bottom: .5rem; }
+    .tweet__actions .action {
+      font-family: "Noto Sans", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      line-height: 19px;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 0px;
+      flex-grow: 1;
+      background-color: #fff;
+      transition: .2s background-color ease-in-out;
+      cursor: pointer;
+      color: #4F4F4F; }
+      .tweet__actions .action span {
+        display: flex;
+        align-content: center; }
+        .tweet__actions .action span i {
+          margin-right: .5rem; }
+      .tweet__actions .action:hover {
+        background-color: #F2F2F2; }
+  .tweet__reply {
+    display: flex;
+    border-bottom: 1px solid #F2F2F2;
+    padding-bottom: 5px; }
+    .tweet__reply div {
+      display: flex;
+      align-items: center;
+      background: #FAFAFA;
+      border: 1px solid #F2F2F2;
+      border-radius: 0.5rem;
+      width: 100%;
+      height: 40px;
+      padding: 0px 12px; }
+    .tweet__reply i {
+      color: #BDBDBD; }
+    .tweet__reply img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover; }
+    .tweet__reply .reply__cover {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      margin-right: 1rem;
+      border-radius: 0.5rem; }
+    .tweet__reply .reply__textbox {
+      border: none;
+      resize: none;
+      width: 100%;
+      height: 100%;
+      font-family: "Noto Sans", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 40px;
+      outline: none;
+      background-color: transparent; }
+  .tweet__comments .comment {
+    padding-top: 1.25rem;
+    display: flex; }
+  .tweet__comments .comments__cover {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-right: 1rem;
+    border-radius: 0.5rem; }
+  .tweet__comments .comments__single {
+    width: 100%; }
+  .tweet__comments .comments__wrapper {
+    background: #FAFAFA;
+    border-radius: 8px;
+    padding: 8px 16px; }
+  .tweet__comments .comments__author {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-right: .5rem; }
+  .tweet__comments .comments__date {
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #BDBDBD; }
+  .tweet__comments .comments__content {
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #4F4F4F; }
+  .tweet__comments .comments__actions {
+    display: flex;
+    align-items: center; }
+    .tweet__comments .comments__actions button {
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-family: "Noto Sans", sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      color: #BDBDBD;
+      background-color: white;
+      transition: .2s background-color ease-in-out; }
+      .tweet__comments .comments__actions button i {
+        font-size: 1rem; }
+      .tweet__comments .comments__actions button:hover {
+        background-color: #F2F2F2; }
+
+/*# sourceMappingURL=styles.css.map */

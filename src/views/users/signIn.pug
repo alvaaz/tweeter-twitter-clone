@@ -1,0 +1,16 @@
+extends ../layouts/sign.pug
+
+block content
+  .signin
+    h4.signin__title Login
+    form(action="/users/signin" method="POST")
+      .field
+        input(type="email" placeholder="Email")
+      .field
+        input(type="password" placeholder="Password")
+      button.sign-button Start coding now
+    p.signin__other or continue with these social profile
+    p.signin__login Don't have an account yet?
+      a(href="/users/signup") Register
+
+
