@@ -9,7 +9,6 @@ export const tweet = {
     res.send("Index image");
   },
   create: (req: Request, res: Response) => {
-    console.log(req.body.content)
     //@ts-ignore
     // req.file
     const saveTweet = async () => {

@@ -17,9 +17,50 @@ html(lang="en")
           a.nav__link.nav__link--active(href="/") Home
           a.nav__link(href="/explore") Explore
           a.nav__link(href="/bookmarks") Bookmarks
-        .nav__profile
+        .dropdown
           img.profile__img(src="https://cdn.stocksnap.io/img-thumbs/960w/smiling-woman_W6GFOSFAXA.jpg", alt="")
-          span.profile__name Xanthe Neal
+          span.dropdown-toggle(name="visibility") Xanthe Neal
+          .dropdown__menu
+            a.menu__item
+              i.material-icons person
+              | Profile
+            a.menu__item
+              i.material-icons login
+              | Logout
       block hero
     block content
-    script(src="/public/js/main.js")
+    script(src="public/js/main.js")
+    script.
+      const dropdowns = document.querySelectorAll(".dropdown-toggle");
+      function openDropdown(event){
+        event.target.parentNode.classList.add("open");
+      }
+
+      function resetDropdowns(){
+        var element = document.querySelector(".dropdown.open");
+        if(element){ element.classList.remove("open"); }
+      }
+
+      function documentHandler(e){
+        resetDropdowns();
+        console.log(e)
+      };
+      if(dropdowns.length>0){
+        dropdowns.forEach(el=>{
+          el.addEventListener('click',function(e){
+            const isActive = e.target.parentNode.classList.contains("open");
+            const element = document.querySelector(".dropdown.open");
+            if(element) {
+              element.classList.remove("open");
+            }
+            resetDropdowns();
+            if (isActive) {
+              return;
+            }
+            e.stopPropagation();
+            e.preventDefault();
+            openDropdown(e);
+            document.addEventListener('click', documentHandler, false);
+          }, false);
+        })
+      }

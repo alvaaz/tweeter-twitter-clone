@@ -1,16 +1,26 @@
 extends ../layouts/sign.pug
 
 block content
-  .signin
-    h4.signin__title Login
-    form(action="/users/signin" method="POST")
+  .sign
+    img(class="logo" src="/public/img/logo.svg", alt="")
+    h4.h4 Login
+    form(action="/signin" method="POST")
       .field
-        input(type="email" placeholder="Email")
+        i.material-icons email
+        input(type="email" name="email" placeholder="Email")
       .field
-        input(type="password" placeholder="Password")
-      button.sign-button Start coding now
-    p.signin__other or continue with these social profile
-    p.signin__login Don't have an account yet?
-      a(href="/users/signup") Register
-
-
+        i.material-icons lock
+        input(type="password" name="password" placeholder="Password")
+      button.button__primary Login
+    p.sign__other or continue with these social profile
+    .sign__logos
+      a(href='/google' title='google')
+        i.fab.fa-google
+      a(href='http://facebook.com/' title='Google')
+        i.fab.fa-facebook-square
+      a(href='http://facebook.com/' title='Twitter')
+        i.fab.fa-twitter
+      a(href='http://facebook.com/' title='Github')
+        i.fab.fa-github
+    p.sign__login Don't have an account yet?
+      a(href="/signup") Register

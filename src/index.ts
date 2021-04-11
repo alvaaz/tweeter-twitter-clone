@@ -1,9 +1,7 @@
 import express from "express";
-import { config } from "./server/config";
+import { config } from "./server";
 import { connect } from "./db";
 import browserSync from 'browser-sync'
-
-const isProduction = 'production' === process.env.NODE_ENV;
 
 connect();
 
@@ -14,7 +12,6 @@ app.listen(port, listening);
 
 function listening() {
   console.log("Server on port", port);
-  // if(!isProduction) {
     browserSync({
       files: ['src/**/**/*.{pug,js,css}'],
       online: false,
@@ -22,5 +19,4 @@ function listening() {
       proxy: 'localhost:' + port,
       ui: false
     })
-  // }
 }

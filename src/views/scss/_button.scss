@@ -1,0 +1,39 @@
+.button {
+  &__primary {
+    background: #2f80ed;
+    border-radius: 8px;
+    border: none;
+    width: 100%;
+    padding: 0.6125rem 0px;
+    color: white;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+  }
+  &__secondary {
+    border-radius: 8px;
+    border: 1px solid #828282;
+    padding: 0.6125rem 2rem;
+    color: #828282;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  &__link {
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #2d9cdb;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+}

@@ -15,4 +15,7 @@ export const home = {
   profile: async (req: Request, res: Response) => {
     res.render("profile");
   },
+  edit: async (req: Request, res: Response) => {
+    res.render("edit");
+  },
 };

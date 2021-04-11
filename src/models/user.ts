@@ -1,22 +1,60 @@
-import { Schema, model } from "mongoose";
+import { Error, Document, Schema, model } from "mongoose";
 import bcryptjs from "bcryptjs";
+
+export type UserDocument = Document & {
+    name: string;
+    email: string;
+    password: string;
+
+    google: string;
+    tokens: AuthToken[];
+
+    profile: {
+      name: string;
+      picture: string;
+    };
+
+    matchPassword: matchPassword
+    encryptPassword: encryptPassword
+};
+
+type matchPassword = (password: string, cb: (err: any, isMatch: any) => {}) => void;
+type encryptPassword = (password: string) => Promise<string>
+
+export interface AuthToken {
+    accessToken: string;
+    kind: string;
+}
 
 const UserSchema = new Schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
+    email: { type: String, unique: true },
+    name: String,
+    password: String,
+
+    google: String,
+    tokens: Array,
+
+    profile: {
+      name: String,
+      picture: String
+    }
   },
   { timestamps: true }
 );
 
-UserSchema.methods.encryptPassword = async (password: string) => {
+const encryptPassword: encryptPassword = async (password) => {
   const salt = await bcryptjs.genSalt(10);
   return await bcryptjs.hash(password, salt);
 };
 
-UserSchema.methods.matchPassword = async function (password: string) {
-  await bcryptjs.compare(password, this.password);
+const comparePassword: matchPassword = function (this: any, password, cb) {
+  return bcryptjs.compare(password, this.password, (err: Error, isMatch: boolean) => {
+    cb(err, isMatch);
+  });
 };
 
-export const User = model("User", UserSchema);
+UserSchema.methods.encryptPassword = encryptPassword
+UserSchema.methods.matchPassword = comparePassword
+
+export const User = model<UserDocument>("User", UserSchema);

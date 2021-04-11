@@ -1,0 +1,22 @@
+extends layouts/main.pug
+
+block content
+  .profile
+    a(class="button__link" href="/profile")
+      i.material-icons keyboard_arrow_left
+      | Back
+    .box
+      h4.h4 Change Info
+      p.body2 Changes will be reflected to every services
+      form(action="/signin" method="POST")
+        .field
+          input(type="email" name="email" placeholder="Email")
+        .field
+          input(type="password" name="password" placeholder="Password")
+        .field
+          input(type="email" name="email" placeholder="Email")
+        .field
+          input(type="password" name="password" placeholder="Password")
+        .field
+          input(type="password" name="password" placeholder="Password")
+        button.button__primary Save
