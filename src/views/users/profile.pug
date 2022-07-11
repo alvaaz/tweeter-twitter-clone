@@ -14,10 +14,10 @@ block content
           div(class="px-4 py-3")
             div(class="flex items-start justify-between")
               div(class="w-36 h-36 -mt-[15%] overflow-hidden rounded-full")
-                if user.profile
+                if user.profile.picture
                   img(class="w-full h-full object-cover" src=`/public/upload/temp/${user.profile.picture}` alt="")
                 else
-                  img(class="w-full h-full object-cover" src="https://pbs.twimg.com/profile_banners/106276044/1497628279/600x200" alt="")
+                  img(class="w-full h-full object-cover" src="/public/img/default-profile.png" alt="")
               a(href="#" id="editBtn" class="font-bold rounded-full border border-gray-300 h-9 px-4 hover:bg-slate-100 text-[15px] flex items-center transition-all") Edit profile
             h1(class="text-xl font-bold")=user.name
             p(class="text-sm text-gray-500 mb-2") @#{user.username}

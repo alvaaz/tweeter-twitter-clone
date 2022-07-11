@@ -41,3 +41,9 @@ mongo
 ```bash
 use mydb
 ```
+
+Change session and server
+
+```bash
+mongodb://mongo/mydb
+```

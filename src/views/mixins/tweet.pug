@@ -1,7 +1,10 @@
 mixin tweet(id, content, retweets, likes, author)
   a(href="#")
     article(class="flex gap-3 hover:bg-gray-50 px-4 py-3 border-b border-b-gray-100")
-      img(class="w-12 h-12 object-cover rounded-full" src=`/public/upload/temp/${author.profile.picture}` alt="")
+      if author.profile.picture
+        img(class="w-12 h-12 object-cover rounded-full" src=`/public/upload/temp/${author.profile.picture}` alt="")
+      else
+        img(class="w-12 h-12 object-cover rounded-full" src="/public/img/default-profile.png" alt="")
       div(class="grow")
         div(class="flex items-center gap-1")
           p(class="text-gray-900 font-bold")=author.name
