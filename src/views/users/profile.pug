@@ -1,0 +1,76 @@
+extends ../layouts/main.pug
+include ../mixins/tweet.pug
+block content
+  main(class="flex grow")
+    div(class="w-[990px] flex")
+      div(class="w-[600px] border-x border-x-gray-100")
+        div(class="sticky top-0 h-14 backdrop-blur-md bg-white bg-opacity-80 z-10 flex px-4 items-center gap-8")
+          +ArrowLeft
+          div(class="flex flex-col")
+            h1(class="text-xl font-bold")=user.name
+            p(class="text-sm text-gray-500") 6432 tweets
+        div
+          img(src="https://pbs.twimg.com/profile_banners/106276044/1497628279/600x200" alt="")
+          div(class="px-4 py-3")
+            div(class="flex items-start justify-between")
+              div(class="w-36 h-36 -mt-[15%] overflow-hidden rounded-full")
+                if user.profile
+                  img(class="w-full h-full object-cover" src=`/public/upload/temp/${user.profile.picture}` alt="")
+                else
+                  img(class="w-full h-full object-cover" src="https://pbs.twimg.com/profile_banners/106276044/1497628279/600x200" alt="")
+              a(href="#" id="editBtn" class="font-bold rounded-full border border-gray-300 h-9 px-4 hover:bg-slate-100 text-[15px] flex items-center transition-all") Edit profile
+            h1(class="text-xl font-bold")=user.name
+            p(class="text-sm text-gray-500 mb-2") @#{user.username}
+            p(class="text-gray-500 mb-2") I’m a software designer and developer from Chile 🇨🇱, currently working at
+            div(class="text-sm flex gap-4")
+              p(class="flex gap-1")
+                span(class="font-bold") 1,433
+                span(class="text-gray-500") Following
+              p(class="flex gap-1")
+                span(class="font-bold") 1,433
+                span(class="text-gray-500") Following
+        nav(class="flex justify-between border-b border-gray-100")
+          - var links = [{title: 'Tweets', name: ''}, {title: 'Tweets & replies', name: 'with_replies'}, {title: 'Media', name: 'media'}, {title: 'Likes', name: 'likes'}]
+          each link in links
+            a(href=`/${user.username}${link.name ? `/${link.name}` : ''}` class="flex justify-center h-14 hover:bg-gray-100 grow items-stretch")
+              div(class="relative flex items-center")
+                p(class="text-gray-500 flex items-center")=link.title
+                if page_name == link.name
+                  div(class="h-1 w-full bg-blue-500 absolute bottom-0 rounded-full")
+        if page_name == 'likes'
+          each tweet in likes
+            +tweet(tweet.id, tweet.content, tweet.retweets, tweet.likes, tweet.author)
+
+        #modal-1.modal.micromodal-slide(aria-hidden='true')
+          div(class="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center z-10 bg-black bg-opacity-60" tabindex='-1' data-micromodal-close='')
+            form(method="POST" action="/profile/edit" class="bg-white w-[600px] h-[650px] min-w-[600px] max-h-[90vh] max-w-[80vw] min-h-[400px] rounded-lg overflow-y-auto" role='dialog' aria-modal='true' aria-labelledby='modal-1-title' encType='multipart/form-data')
+              header(class="flex items-center px-4 py-3")
+                button(class="before:content-['\\2715'] mr-6 bg-transparent border-0" aria-label='Close modal' data-micromodal-close='')
+                if itsMe
+                  h2#modal-1-title(class="mt-0 mb-0 font-semibold text-xl") Edit profile
+                else
+                  h2(class="mt-0 mb-0 font-semibold text-xl bg-black") Follow
+                button(type="submit" class="ml-auto bg-black text-white rounded-full py-2 text-sm font-bold px-4") Save
+              main#modal-1-content(method="POST" action="/profile/edit")
+                div(class="max-h-52 h-52 w-full bg-gray-400")
+                div(class="w-36 h-36 -mt-[15%] overflow-hidden rounded-full relative")
+                  if user.profile
+                    img(class="w-full h-full object-cover" src=`/public/upload/temp/${user.profile.picture}` alt="")
+                  else
+                    img(class="w-full h-full object-cover" src="https://pbs.twimg.com/profile_banners/106276044/1497628279/600x200" alt="")
+                  label(for="profile-upload" class="absolute h-full w-full top-0 left-0 opacity-30 bg-black cursor-pointer")
+                  input(type="file" name="profile-upload" class="opacity-0" id="profile-upload")
+                div
+                  input(type="text" class="w-full border-2 border-gray-300 rounded-lg px-4 py-2" placeholder="Name")
+                  input(type="text" class="w-full border-2 border-gray-300 rounded-lg px-4 py-2" placeholder="Bio")
+
+
+
+      div(class="w-[350px]")
+        input(type="text" placeholder="Search Twitter")
+  script(src="https://unpkg.com/micromodal/dist/micromodal.min.js")
+  script.
+    const editButton = document.getElementById('editBtn')
+    editButton.addEventListener('click', () => {
+      MicroModal.show('modal-1')
+    })

@@ -1,0 +1,29 @@
+mixin tweet(id, content, retweets, likes, author)
+  a(href="#")
+    article(class="flex gap-3 hover:bg-gray-50 px-4 py-3 border-b border-b-gray-100")
+      img(class="w-12 h-12 object-cover rounded-full" src=`/public/upload/temp/${author.profile.picture}` alt="")
+      div(class="grow")
+        div(class="flex items-center gap-1")
+          p(class="text-gray-900 font-bold")=author.name
+          p(class="text-gray-400")=author.username
+          p(class="text-gray-400") 2h
+        div
+          p=content
+        div(class="text-gray-500 flex justify-between")
+          div(class="flex items-center gap-2")
+            div
+              +Comment
+            span(class="text-xs") 25
+          form(class="flex items-center gap-2" method="POST" action=`/tweet/${id}/retweet`)
+            button(type="submit")
+              div
+                +Retweet
+              span(class="text-xs")=retweets.length
+          form(class="flex items-center gap-2" method="POST" action=`/tweet/${id}/like`)
+            button(type="submit")
+              div
+                +Love
+              span(class="text-xs")=likes.length
+          div(class="flex items-center gap-2")
+            div
+              +Share

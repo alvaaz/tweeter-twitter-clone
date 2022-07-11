@@ -1,66 +1,13 @@
+include ../includes/icons.pug
 <!DOCTYPE html>
 html(lang="en")
   head
     meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Document
-    link(rel="stylesheet", href="https://necolas.github.io/normalize.css/8.0.1/normalize.css")
-    link(rel="stylesheet", href="/public/css/styles.css")
-    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@500&display=swap")
-    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+    link(rel="stylesheet" href="/public/css/styles.css")
 
-  body
-    header.header
-      nav.nav
-        img.nav__logo(src="/public/img/logo.png", alt="")
-        .nav__links
-          a.nav__link.nav__link--active(href="/") Home
-          a.nav__link(href="/explore") Explore
-          a.nav__link(href="/bookmarks") Bookmarks
-        .dropdown
-          img.profile__img(src="https://cdn.stocksnap.io/img-thumbs/960w/smiling-woman_W6GFOSFAXA.jpg", alt="")
-          span.dropdown-toggle(name="visibility") Xanthe Neal
-          .dropdown__menu
-            a.menu__item
-              i.material-icons person
-              | Profile
-            a.menu__item
-              i.material-icons login
-              | Logout
+  body.flex
+    include ../includes/header.pug
       block hero
     block content
-    script(src="public/js/main.js")
-    script.
-      const dropdowns = document.querySelectorAll(".dropdown-toggle");
-      function openDropdown(event){
-        event.target.parentNode.classList.add("open");
-      }
-
-      function resetDropdowns(){
-        var element = document.querySelector(".dropdown.open");
-        if(element){ element.classList.remove("open"); }
-      }
-
-      function documentHandler(e){
-        resetDropdowns();
-        console.log(e)
-      };
-      if(dropdowns.length>0){
-        dropdowns.forEach(el=>{
-          el.addEventListener('click',function(e){
-            const isActive = e.target.parentNode.classList.contains("open");
-            const element = document.querySelector(".dropdown.open");
-            if(element) {
-              element.classList.remove("open");
-            }
-            resetDropdowns();
-            if (isActive) {
-              return;
-            }
-            e.stopPropagation();
-            e.preventDefault();
-            openDropdown(e);
-            document.addEventListener('click', documentHandler, false);
-          }, false);
-        })
-      }

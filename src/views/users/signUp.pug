@@ -2,13 +2,15 @@ extends ../layouts/sign.pug
 
 block content
   .sign
-    img(class="logo" src="/public/img/logo.svg", alt="")
     h4.h4 Join thousands of learners from around the world
     p.body2 Master web development by making real-life projects. There are multiple paths for you to choose
     form(action="/signup" method="POST")
       .field
         i.material-icons person
         input(type="text" name="name" placeholder="Name" value=name)
+      .field
+        i.material-icons person
+        input(type="text" name="username" placeholder="Username" value=username)
       .field
         i.material-icons email
         input(type="email" name="email" placeholder="Email" value=email)
