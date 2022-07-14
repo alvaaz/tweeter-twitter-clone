@@ -38,7 +38,7 @@ export const users = {
     }
   },
   renderSignInForm: (req: Request, res: Response) => {
-    res.render('users/signIn');
+    res.render('users/signIn', { page_title: 'Sign In' });
   },
   signIn: passport.authenticate('local', {
     failureRedirect: '/signin',
@@ -47,9 +47,13 @@ export const users = {
   }),
 
   logout: (req: Request, res: Response) => {
-    req.logout((err) => {
+    req.logout((err: any) => {
       console.log(err);
       res.redirect('/signin');
     });
+  },
+
+  login: (req: Request, res: Response) => {
+    res.render('users/signIn', { page_title: 'Sign In', modal: true });
   }
 };

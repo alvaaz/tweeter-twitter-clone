@@ -6,11 +6,12 @@ services:
     restart: always
     build: .
     ports:
-      - "5000:3000"
+      - "3001:3001"
     networks:
       - some-net
     volumes:
       - .:/usr/src/app
+      - /usr/src/app/node_modules
   mongo:
     container_name: mongo
     image: mongo
@@ -22,3 +23,6 @@ services:
 networks:
   some-net:
     driver: bridge
+
+volumes:
+  exclude:

@@ -68,9 +68,8 @@ block content
 
       div(class="w-[350px]")
         input(type="text" placeholder="Search Twitter")
-  script(src="https://unpkg.com/micromodal/dist/micromodal.min.js")
   script.
     const editButton = document.getElementById('editBtn')
     editButton.addEventListener('click', () => {
-      MicroModal.show('modal-1')
+      micromodal.show('modal-1')
     })

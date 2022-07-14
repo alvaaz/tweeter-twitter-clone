@@ -2,12 +2,12 @@
 html(lang="en")
   head
     meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Document
-    link(rel="stylesheet", href="https://necolas.github.io/normalize.css/8.0.1/normalize.css")
-    link(rel="stylesheet", href="/public/css/styles.css")
-    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@500&display=swap")
-    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title=page_title
+    link(rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css")
+    link(rel="stylesheet" href="/public/css/styles.css")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@500&display=swap")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
 
   body.sign-wrapper
     if error
@@ -15,5 +15,4 @@ html(lang="en")
     if success_msg
       span= success_msg
     block content
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/SocialIcons/1.0.1/soc.min.js")
-    script(src="https://kit.fontawesome.com/bfc122bde0.js" crossorigin="anonymous")
+    script(src="/micromodal/micromodal.min.js")

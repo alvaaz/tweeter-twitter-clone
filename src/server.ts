@@ -10,6 +10,7 @@ import passport from 'passport';
 import { router } from './routes';
 import { default as connectMongoDBSession } from 'connect-mongodb-session';
 import './config/passport';
+import MicroModal from 'micromodal';
 dotenv.config();
 
 const port = process.env.SERVER_PORT;
@@ -91,7 +92,10 @@ export const config = (app: Application) => {
   app.use(router);
   // app.use(home[404]);
 
-  // static fi les
+  app.use(
+    '/micromodal',
+    express.static(path.join(__dirname, '../node_modules/micromodal/dist/'))
+  );
 
   app.use('/public', express.static(path.join(__dirname, './public')));
 

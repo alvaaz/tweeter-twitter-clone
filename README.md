@@ -47,3 +47,7 @@ Change session and server
 ```bash
 mongodb://mongo/mydb
 ```
+
+Uso con browsersync
+
+Browsersync tiene el parámetro --proxy para enlazar con el server levantado con nodemon y pasarlo por browsersync al puerto 3001. Por eso docker-compose expone sólo el puerto 3001.

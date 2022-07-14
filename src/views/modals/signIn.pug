@@ -1,0 +1,11 @@
+#modal-2.modal.micromodal-slide(aria-hidden='true')
+  div(class="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center z-10 bg-black bg-opacity-60" tabindex='-1' data-micromodal-close='')
+    form(action="/signin" method="POST" class="bg-white w-[600px] h-[650px] min-w-[600px] max-h-[90vh] max-w-[80vw] min-h-[400px] rounded-lg overflow-y-auto" role='dialog' aria-modal='true' aria-labelledby='modal-1-title' encType='multipart/form-data')
+      header(class="flex items-center px-4 py-3")
+        button(class="before:content-['\\2715'] mr-6 bg-transparent border-0" aria-label='Close modal' data-micromodal-close='')
+        h2#modal-1-title(class="mt-0 mb-0 font-semibold text-xl") Accede
+      main#modal-1-content
+        div
+          input(type="email" name="email" placeholder="Email" class="w-full border-2 border-gray-300 rounded-lg px-4 py-2")
+          input(type="password" name="password" placeholder="Password" class="w-full border-2 border-gray-300 rounded-lg px-4 py-2")
+          button.button__primary Login

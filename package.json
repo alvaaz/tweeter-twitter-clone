@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "tsc": "tsc",
-    "start": "concurrently \"nodemon src/index.ts && yarn ui\" \"yarn tailwind:css\"",
+    "start": "concurrently \"nodemon src/index.ts\" \"yarn tailwind:css\"",
     "tailwind:css": "postcss src/views/styles/tailwind.css -o src/public/css/styles.css --watch",
     "lint": "eslint . --ext .ts",
     "ui": "browser-sync start --proxy=localhost:3000 --files='**/*.css, **/*.pug, **/*.js' --ignore=node_modules --reload-delay 10 --no-ui --no-notify"
@@ -19,6 +19,7 @@
     "@types/express": "^4.17.8",
     "@types/express-session": "^1.17.3",
     "@types/fs-extra": "^9.0.13",
+    "@types/micromodal": "^0.3.3",
     "@types/morgan": "^1.9.1",
     "@types/multer": "^1.4.7",
     "@types/node": "^14.11.5",
@@ -52,6 +53,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "fs-extra": "^10.1.0",
+    "micromodal": "^0.4.10",
     "mongoose": "^5.10.8",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
