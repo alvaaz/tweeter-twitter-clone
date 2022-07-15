@@ -30,6 +30,8 @@ router.get('/:username/media', profile.media);
 router.get('/:username/likes', profile.likes);
 router.post('/profile/edit', profile.edit);
 
+router.get('favicon.ico', (req, res) => res.sendStatus(204));
+
 router.get(
   '/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })

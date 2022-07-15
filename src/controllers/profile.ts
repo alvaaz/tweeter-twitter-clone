@@ -4,15 +4,20 @@ import { User, Tweet, UserDocument } from '../models';
 
 export const profile = {
   tweets: async (req: Request, res: Response) => {
+    const user = await User.findOne({ username: req.params.username });
+    console.log(req.params.username, 'params');
     if (req.user && req.params.username === req.user.username) {
       res.render('users/profile', {
         user: req.user,
-        page_name: '',
+        page_title: `${user?.name} (@${user?.username})`,
         itsMe: true
       });
     } else {
-      const user = await User.findOne({ username: req.params.username });
-      res.render('users/profile', { user: user, page_name: '', itsMe: false });
+      res.render('users/profile', {
+        user: user,
+        page_title: `${user?.name} (@${user?.username})`,
+        itsMe: false
+      });
     }
   },
   withReplies: (req: Request, res: Response) => {

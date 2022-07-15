@@ -5,6 +5,7 @@ export type UserDocument = Document & {
   name: string;
   email: string;
   password: string;
+  username: string;
 
   likes: string[];
 
