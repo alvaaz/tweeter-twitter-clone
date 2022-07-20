@@ -4,7 +4,11 @@ import { User } from '../models';
 
 export const users = {
   renderSignUpForm: (req: Request, res: Response) => {
-    res.render('users/signUp');
+    res.render('users/signin', {
+      title: 'Sign Up',
+      modal: 'signup'
+    });
+    res.status(200).json({ data: 'ok' });
   },
   signUp: async (req: Request, res: Response) => {
     const errors = [];
@@ -13,7 +17,7 @@ export const users = {
       errors.push({ text: 'Passwords must be at least 4 characters.' });
     }
     if (errors.length > 0) {
-      res.render('users/signup', {
+      res.render('users/signUp', {
         errors,
         name,
         email,
@@ -38,7 +42,7 @@ export const users = {
     }
   },
   renderSignInForm: (req: Request, res: Response) => {
-    res.render('users/signIn', { page_title: 'Sign In' });
+    res.render('users/signIn', { page_title: 'Sign In', modal: 'signin' });
   },
   signIn: passport.authenticate('local', {
     failureRedirect: '/signin',

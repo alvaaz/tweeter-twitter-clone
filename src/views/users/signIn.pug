@@ -23,25 +23,41 @@ block content
     include ../modals/signUp.pug
     include ../modals/signIn.pug
   script.
-    const signUpButton = document.getElementById('sign-up-btn')
-    const signInButton = document.getElementById('sign-in-btn')
-    const selectSign = document.getElementById('select-sign')
-    const googleLabel = document.getElementById('google-label')
-    const emailLabel = document.getElementById('email-label')
-    let state = true
+    const useState = (defaultValue) => {
+      let value = defaultValue;
+      const getValue = () => value
+      const setValue = newValue => value = newValue
+      return [getValue, setValue];
+    }
 
-    selectSign.addEventListener('click', (ev) => {
+    const [state, setState] = useState(true);
+
+    const $ = selector => document.querySelector(selector)
+    const signUpButton = $('#sign-up-btn')
+    const selectSign = $('#select-sign')
+    const googleLabel = $('#google-label')
+    const emailLabel = $('#email-label')
+
+    function emailModalFx() {
+      if(state()) {
+        MicroModal.show('modal-1')
+      } else {
+        MicroModal.show('modal-2')
+      }
+    }
+
+    function toggleState(ev) {
       ev.preventDefault()
-      state = !state
-      googleLabel.textContent = state ? ' Sign up with Google' : ' Continue with Google'
-      emailLabel.textContent = state ? ' Sign up with Email' : ' Continue with Email'
-      selectSign.textContent = state ? ' Sign in' : ' Sign up'
+      setState(!state())
+      googleLabel.textContent = state() ? ' Sign up with Google' : ' Continue with Google'
+      emailLabel.textContent = state() ? ' Sign up with Email' : ' Continue with Email'
+      selectSign.textContent = state() ? ' Sign in' : ' Sign up'
+    }
 
-      emailLabel.addEventListener('click', function (event) {
-        if(state) {
-          MicroModal.show('modal-1')
-        } else {
-          MicroModal.show('modal-2')
-        }
-      })
-    })
+    selectSign.addEventListener('click', ev => toggleState(ev))
+
+    signUpButton.addEventListener('click', emailModalFx)
+
+    window.addEventListener('load', (event) => {
+      MicroModal.show('modal-1')
+    });
