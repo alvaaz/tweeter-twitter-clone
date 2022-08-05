@@ -1,53 +1,60 @@
 # Tweeter clone
 
-## How to get up and running without docker-compose
+This project is a clone of [Twitter](https://twitter.com). It is a simple project to learn how to use [NodeJS](https://nodejs.org) and [Express](https://expressjs.com) to create a simple web application. This app is using [Docker](https://www.docker.com) and [docker-compose](https://docs.docker.com/compose/overview/) to create a containerized application.
 
-To start using browser-sync, you need to run the following command:
+### Dependencies
 
-```bash
-yarn start
-```
+- [NodeJS](https://nodejs.org)
+- [Express](https://expressjs.com)
+- [MongoDB](https://www.mongodb.com)
+- [Mongoose](https://mongoosejs.com)
+- [Passport](https://www.passportjs.org)
+- [TailwindCSS](https://tailwindcss.com)
 
-This will start the server.
+### Features
 
-You need open another tab in your terminal and run the following command:
+- Login with Google or Email
+- Create, retweet, like tweets
+- Follow users
+- View your profile
+- View other profiles
+- View your feed
+- View other feeds
+- View your followers
+- View your following
+- View your favorites
+- View your retweets
 
-```bash
-yarn ui
-```
+### Install
 
-This will allow you to see the UI and get changes live.
+This project is dockerized and can be installed with the following command:
 
-## How to get up and running using docker-compose
-
-Once you've cloned the project to your host we can now start our project.
-
-```bash
+```sh
 docker-compose build && docker-compose up
 ```
 
-## Database access
+### Getting started
 
-To access the database we need to run the following command:
+Try to reach the login page with the following url:
 
-```bash
+```sh
+localhost:3001
+```
+
+This app uses [Browsersync](https://browsersync.io/) to automatically reload the page when a change is made. Browsersync has set up a --proxy to forward the requests to the localhost:3001. Docker-compose exposes port 3001 to the localhost as well.
+
+### Database access
+
+To access the database you need to run the following command while in the container:
+
+```sh
 docker exec -it mongo bash
 ```
 
-```bash
+```sh
 mongo
 ```
 
-```bash
+```sh
 use mydb
 ```
-
-Change session and server
-
-```bash
-mongodb://mongo/mydb
-```
-
-Uso con browsersync
-
-Browsersync tiene el parámetro --proxy para enlazar con el server levantado con nodemon y pasarlo por browsersync al puerto 3001. Por eso docker-compose expone sólo el puerto 3001.
