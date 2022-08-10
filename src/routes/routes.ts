@@ -7,8 +7,8 @@ export const router = Router();
 
 //Views
 router.get('/', isAuth, home.index);
-router.get('/failed', (req, res) => res.send('You failed to log in'));
-// router.get("/good", (req, res) => res.send(`Welcome mr ${req.user.email}`));
+router.get('/auth/failed', (req, res) => res.send('You failed to log in'));
+router.get("/auth/good", (req, res) => res.send(`Welcome mr `));
 
 router.get('/explore', isAuth, home.explore);
 router.get('/bookmarks', isAuth, home.bookmarks);
@@ -33,12 +33,14 @@ router.post('/profile/edit', profile.edit);
 router.get('favicon.ico', (req, res) => res.sendStatus(204));
 
 router.get(
-  '/google',
+  '/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
+
 router.get(
-  '/google/callback',
-  passport.authenticate('google', { failureRedirect: '/failed' }),
+  '/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/auth/failed',
+    successRedirect: '/auth/good' }),
   function (req, res) {
     res.send(req.user);
     res.send('you reached the redirect URI');

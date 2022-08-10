@@ -33,6 +33,12 @@ This project is dockerized and can be installed with the following command:
 docker-compose build && docker-compose up
 ```
 
+You'll need install dependencies locally to have all types of dependencies.
+
+```sh
+yarn install
+```
+
 ### Getting started
 
 Try to reach the login page with the following url:

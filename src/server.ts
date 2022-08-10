@@ -10,7 +10,6 @@ import passport from 'passport';
 import { router } from './routes';
 import { default as connectMongoDBSession } from 'connect-mongodb-session';
 import './config/passport';
-import MicroModal from 'micromodal';
 dotenv.config();
 
 const port = process.env.SERVER_PORT;

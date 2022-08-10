@@ -7,6 +7,9 @@ import {
 } from 'passport-google-oauth';
 import { User, UserDocument } from '../models';
 import { Request } from 'express';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 passport.serializeUser((user: any, done) => {
   done(null, user.id);
@@ -56,10 +59,9 @@ passport.use(
 passport.use(
   new GoogleStrategy(
     {
-      clientID:
-        '266338008439-54m5fgbrtlu9f9emh986pet25f4svhiq.apps.googleusercontent.com',
-      clientSecret: 'lVCSee8paNuOXPOTSmp0dggV',
-      callbackURL: 'http://localhost:5000/google/callback',
+      clientID: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      callbackURL: 'http://localhost:3001/auth/google/callback',
       passReqToCallback: true
     },
     (
@@ -69,6 +71,7 @@ passport.use(
       profile: Profile,
       done: VerifyFunction
     ) => {
+      console.log('pasa por acá')
       User.findOne(
         { email: profile._json.email },
         (err: any, existingEmailUser: any) => {

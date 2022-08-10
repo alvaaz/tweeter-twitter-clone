@@ -1,34 +1,63 @@
 extends ../layouts/sign.pug
+include ../includes/icons.pug
 
 block content
-  .sign
-    h4.h4 Join thousands of learners from around the world
-    p.body2 Master web development by making real-life projects. There are multiple paths for you to choose
-    form(action="/signup" method="POST")
-      .field
-        i.material-icons person
-        input(type="text" name="name" placeholder="Name" value=name)
-      .field
-        i.material-icons person
-        input(type="text" name="username" placeholder="Username" value=username)
-      .field
-        i.material-icons email
-        input(type="email" name="email" placeholder="Email" value=email)
-        if error_msg
-          span= error_msg
-      .field
-        i.material-icons lock
-        input(type="password" name="password" placeholder="Password" value=password)
-      button.button__primary Start coding now
-    p.sign__other or continue with these social profile
-    .sign__logos
-      a(href='/google' title='google')
-        i.fab.fa-google
-      a(href='http://facebook.com/' title='Google')
-        i.fab.fa-facebook-square
-      a(href='http://facebook.com/' title='Twitter')
-        i.fab.fa-twitter
-      a(href='http://facebook.com/' title='Github')
-        i.fab.fa-github
-    p.sign__login Already a member?
-      a(href="/signin") Login
+  div(class="flex items-stretch h-screen")
+    div(class="grow flex items-center basis-1/2 px-8")
+      h1(class="text-7xl font-extrabold") See what's happening
+    div(class="bg-gray-100 grow flex items-center justify-center basis-1/2")
+      div(class="w-full max-w-sm min-w-min-content flex flex-col gap-1")
+        a(class="flex items-center gap-2 border border-gray-200 bg-white rounded-full justify-center py-2 hover:bg-gray-50 transition-all" href="/auth/google")
+          +Google
+          span(class="text-sm" id="google-label") Sign up with Google
+        div(class="flex items-center gap-2")
+          div(class="h-[1px] bg-gray-300 grow")
+          span(class="text-sm") or
+          div(class="h-[1px] bg-gray-300 grow")
+        div(id="sign-up-btn" class="flex items-center gap-2 border border-gray-200 bg-white rounded-full justify-center py-2 hover:bg-gray-50 transition-all cursor-pointer mb-4")
+          span(class="text-sm" id="email-label") Sign up with email
+        p(class="font-semibold text-sm") Already have an account?
+          a(class="text-blue-600 cursor-pointer" id="select-sign")
+            |  Sign in
+
+    include ../modals/signUp.pug
+    include ../modals/signIn.pug
+  script.
+    const useState = (defaultValue) => {
+      let value = defaultValue;
+      const getValue = () => value
+      const setValue = newValue => value = newValue
+      return [getValue, setValue];
+    }
+
+    const [state, setState] = useState(true);
+
+    const $ = selector => document.querySelector(selector)
+    const signUpButton = $('#sign-up-btn')
+    const selectSign = $('#select-sign')
+    const googleLabel = $('#google-label')
+    const emailLabel = $('#email-label')
+
+    function emailModalFx() {
+      if(state()) {
+        MicroModal.show('modal-2')
+      } else {
+        MicroModal.show('modal-1')
+      }
+    }
+
+    function toggleState(ev) {
+      ev.preventDefault()
+      setState(!state())
+      googleLabel.textContent = state() ? ' Sign up with Google' : ' Continue with Google'
+      emailLabel.textContent = state() ? ' Sign up with Email' : ' Continue with Email'
+      selectSign.textContent = state() ? ' Sign in' : ' Sign up'
+    }
+
+    selectSign.addEventListener('click', ev => toggleState(ev))
+
+    signUpButton.addEventListener('click', emailModalFx)
+
+    window.addEventListener('load', (event) => {
+      MicroModal.show('modal-1')
+    });
