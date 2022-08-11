@@ -7,6 +7,9 @@ block content
       h1(class="text-7xl font-extrabold") See what's happening
     div(class="bg-gray-100 grow flex items-center justify-center basis-1/2")
       div(class="w-full max-w-sm min-w-min-content flex flex-col gap-1")
+        if error_msg.length > 0
+          .p-4.mb-4.text-sm.text-red-700.bg-red-100.rounded-lg(class='dark:bg-red-200 dark:text-red-800' role='alert')
+            span.font-medium Error: #{error_msg}
         a(class="flex items-center gap-2 border border-gray-200 bg-white rounded-full justify-center py-2 hover:bg-gray-50 transition-all" href="/auth/google")
           +Google
           span(class="text-sm" id="google-label") Sign up with Google
@@ -19,7 +22,7 @@ block content
         p(class="font-semibold text-sm") Already have an account?
           a(class="text-blue-600 cursor-pointer" id="select-sign")
             |  Sign in
-
+        h1=errors
     include ../modals/signUp.pug
     include ../modals/signIn.pug
   script.
@@ -40,9 +43,9 @@ block content
 
     function emailModalFx() {
       if(state()) {
-        MicroModal.show('modal-2')
-      } else {
         MicroModal.show('modal-1')
+      } else {
+        MicroModal.show('modal-2')
       }
     }
 
@@ -57,7 +60,3 @@ block content
     selectSign.addEventListener('click', ev => toggleState(ev))
 
     signUpButton.addEventListener('click', emailModalFx)
-
-    window.addEventListener('load', (event) => {
-      MicroModal.show('modal-1')
-    });

@@ -4,9 +4,8 @@ import { User } from '../models';
 
 export const users = {
   renderSignUpForm: (req: Request, res: Response) => {
-    res.render('users/signin', {
-      title: 'Sign Up',
-      modal: 'signup'
+    res.render('users/login', {
+      title: 'Sign Up'
     });
     res.status(200).json({ data: 'ok' });
   },
@@ -38,14 +37,12 @@ export const users = {
       newUser.password = await newUser.encryptPassword(password);
       await newUser.save();
       req.flash('success_msg', 'You are registered.');
-      res.redirect('/signin');
+      res.redirect('/login');
     }
   },
-  renderSignInForm: (req: Request, res: Response) => {
-    res.render('users/signIn', { page_title: 'Sign In', modal: 'signin' });
-  },
+
   signIn: passport.authenticate('local', {
-    failureRedirect: '/signin',
+    failureRedirect: '/login',
     successRedirect: '/',
     failureFlash: true
   }),
@@ -53,11 +50,11 @@ export const users = {
   logout: (req: Request, res: Response) => {
     req.logout((err: any) => {
       console.log(err);
-      res.redirect('/signin');
+      res.redirect('/login');
     });
   },
 
   login: (req: Request, res: Response) => {
-    res.render('users/signIn', { page_title: 'Sign In', modal: true });
+    res.render('users/login', { page_title: 'Sign In' });
   }
 };

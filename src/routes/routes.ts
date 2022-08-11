@@ -18,10 +18,9 @@ router.get('/profile/edit', isAuth, home.edit);
 
 router.delete('/tweet/:tweet_id', tweet.remove);
 
-router.get('/signup', users.renderSignUpForm);
-router.post('/signup', users.signUp);
-router.get('/signin', users.renderSignInForm);
-router.post('/signin', users.signIn);
+router.post('/login', users.signIn);
+router.get('/login', users.login);
+
 router.get('/logout', users.logout);
 
 router.get('/:username', profile.tweets);
@@ -39,7 +38,7 @@ router.get(
 
 router.get(
   '/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/auth/failed',
+  passport.authenticate('google', { failureRedirect: '/login',
     successRedirect: '/auth/good' }),
   function (req, res) {
     res.send(req.user);

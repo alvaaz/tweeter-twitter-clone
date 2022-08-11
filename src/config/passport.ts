@@ -76,12 +76,13 @@ passport.use(
         { email: profile._json.email },
         (err: any, existingEmailUser: any) => {
           if (err) {
+            console.log(err, )
             return done(err);
           }
           if (existingEmailUser) {
             console.log('existe');
             req.flash(
-              'errors',
+              'error_msg',
               'There is already an account using this email address. Sign in to that account and link it with Facebook manually from Account Settings.'
             );
             done(err);

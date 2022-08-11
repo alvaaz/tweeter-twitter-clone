@@ -10,9 +10,5 @@ html(lang="en")
     link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
 
   body.sign-wrapper
-    if error
-      span= error
-    if success_msg
-      span= success_msg
     block content
     script(src="/micromodal/micromodal.min.js")

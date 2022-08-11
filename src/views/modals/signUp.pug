@@ -1,7 +1,7 @@
 extends layout.pug
 
 block prepend header
-  -var modalTitle = "Create an account"
+  -var modalTitle = "Create your account"
   -var modalId = "modal-1"
   -var action = "/signup"
 
@@ -9,8 +9,6 @@ block content
   input(type="text" name="name" placeholder="Name" value=name class="w-full border-2 border-gray-300 rounded-lg px-4 py-2 mb-4")
   input(type="text" name="username" placeholder="Username" value=username class="w-full border-2 border-gray-300 rounded-lg px-4 py-2 mb-4")
   input(type="email" name="email" placeholder="Email" value=email class="w-full border-2 border-gray-300 rounded-lg px-4 py-2 mb-4")
-  if error_msg
-    span= error_msg
-  input(type="password" name="password" placeholder="Password" value=password class="w-full border-2 border-gray-300 rounded-lg px-4 py-2")
-  button.button__primary Register
+  input(type="password" name="password" placeholder="Password" value=password class="w-full border-2 border-gray-300 rounded-lg px-4 py-2 mb-4")
+  button(type="submit" class="bg-blue-500 text-white font-bold rounded-full px-4 py-2") Register
 
