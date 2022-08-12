@@ -23,6 +23,7 @@
     "@types/morgan": "^1.9.1",
     "@types/multer": "^1.4.7",
     "@types/node": "^14.11.5",
+    "@types/nodemailer": "^6.4.5",
     "@types/passport": "^1.0.9",
     "@types/passport-google-oauth": "^1.0.41",
     "@types/passport-local": "^1.0.33",
@@ -49,6 +50,7 @@
     "connect-flash": "^0.1.1",
     "connect-mongo": "^3.2.0",
     "connect-mongodb-session": "^3.1.1",
+    "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
@@ -57,6 +59,7 @@
     "mongoose": "^5.10.8",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.7.7",
     "passport": "^0.6.0",
     "passport-google-oauth": "^2.0.0",
     "passport-local": "^1.0.0"

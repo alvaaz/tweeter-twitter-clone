@@ -9,6 +9,9 @@ export type UserDocument = Document & {
 
   likes: string[];
 
+  resetToken: string | undefined;
+  resetTokenExpiration: Date | undefined;
+
   google: string;
   tokens: AuthToken[];
 
@@ -38,6 +41,9 @@ const UserSchema = new Schema(
     name: String,
     username: { type: String, unique: true },
     password: String,
+
+    resetToken: String,
+    resetTokenExpiration: Date,
 
     likes: [{ type: Schema.Types.ObjectId, ref: 'Tweet' }],
     tweets: [{ type: Schema.Types.ObjectId, ref: 'Tweet' }],

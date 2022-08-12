@@ -2,9 +2,9 @@ extends ../layouts/sign.pug
 include ../includes/icons.pug
 
 block content
-  div(class="flex items-stretch h-screen")
+  div(class="flex items-stretch h-screen flex-col lg:flex-row")
     div(class="grow flex items-center basis-1/2 px-8")
-      h1(class="text-7xl font-extrabold") See what's happening
+      h1(class="text-5xl md:text-6xl lg:text-7xl font-extrabold") See what's happening
     div(class="bg-gray-100 grow flex items-center justify-center basis-1/2")
       div(class="w-full max-w-sm min-w-min-content flex flex-col gap-1")
         if error_msg.length > 0
@@ -25,6 +25,7 @@ block content
         h1=errors
     include ../modals/signUp.pug
     include ../modals/signIn.pug
+    include ../modals/reset.pug
   script.
     const useState = (defaultValue) => {
       let value = defaultValue;

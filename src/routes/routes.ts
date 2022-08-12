@@ -18,8 +18,14 @@ router.get('/profile/edit', isAuth, home.edit);
 
 router.delete('/tweet/:tweet_id', tweet.remove);
 
+router.post('/signup', users.signUp);
+
 router.post('/login', users.signIn);
 router.get('/login', users.login);
+
+router.post('/auth/reset', users.renderReset);
+router.get('/reset/:token', users.reset);
+router.post('/new-password', users.newPassword);
 
 router.get('/logout', users.logout);
 

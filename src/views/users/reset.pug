@@ -1,0 +1,20 @@
+extends ../layouts/sign.pug
+include ../includes/icons.pug
+
+block content
+  div(class="flex items-stretch h-screen flex-col lg:flex-row")
+    div(class="grow flex items-center basis-1/2 px-8")
+      h1(class="text-5xl md:text-6xl lg:text-7xl font-extrabold") See what's happening
+    div(class="bg-gray-100 grow flex items-center justify-center basis-1/2")
+      div(class="w-full max-w-sm min-w-min-content flex flex-col gap-1")
+        if error_msg.length > 0
+          .p-4.mb-4.text-sm.text-red-700.bg-red-100.rounded-lg(class='dark:bg-red-200 dark:text-red-800' role='alert')
+            span.font-medium Error: #{error_msg}
+        form(action="/new-password" method="POST")
+          h2(class="font-semibold text-lg mb-3") Reset your password
+          input(type="hidden" name="userId" value=userId)
+          input(type="hidden" name="passwordToken" value=passwordToken)
+          input(type="password" name="password" placeholder="New password" class="w-full border-2 border-gray-300 rounded-lg px-4 py-2 mb-4")
+          input(type="password" name="confirmPassword" placeholder="Confirm your new password" class="w-full border-2 border-gray-300 rounded-lg px-4 py-2 mb-4")
+          button(type="submit" class="bg-blue-500 text-white font-bold rounded-full px-4 py-2") Update password
+        h1=errors

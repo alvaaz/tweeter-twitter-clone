@@ -1,0 +1,10 @@
+extends layout.pug
+
+block prepend header
+  -var modalTitle = "Reset password"
+  -var modalId = "modal-3"
+  -var action = "/auth/reset"
+
+block content
+  input(type="email" name="email" placeholder="Email" class="w-full border-2 border-gray-300 rounded-lg px-4 py-2 mb-4")
+  button(type="submit" class="bg-blue-500 text-white font-bold rounded-full px-4 py-2") Send reset link
