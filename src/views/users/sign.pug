@@ -1,0 +1,50 @@
+extends ../layouts/sign.pug
+include ../includes/icons.pug
+
+block content
+  div(class="flex items-stretch h-screen flex-col lg:flex-row")
+    h2=error
+    div(class="grow flex items-center basis-1/2 px-8")
+      h1(class="text-5xl md:text-6xl lg:text-7xl font-extrabold") See what's happening
+      if(modal)
+        h1 hay un modal pendiente
+    div(class="bg-gray-100 grow flex items-center justify-center basis-1/2")
+      div(class="w-full max-w-sm min-w-min-content flex flex-col gap-1")
+        if error_msg.length > 0
+          .p-4.mb-4.text-sm.text-red-700.bg-red-100.rounded-lg(class='dark:bg-red-200 dark:text-red-800' role='alert')
+            span.font-medium Error: #{error_msg}
+        a(class="flex items-center gap-2 border border-gray-200 bg-white rounded-full justify-center py-2 hover:bg-gray-50 transition-all" href="/auth/google")
+          +Google
+          span(class="text-sm" id="google-label") Sign up with Google
+        div(class="flex items-center gap-2")
+          div(class="h-[1px] bg-gray-300 grow")
+          span(class="text-sm") or
+          div(class="h-[1px] bg-gray-300 grow")
+        div(id="sign-up-btn" class="flex items-center gap-2 border border-gray-200 bg-white rounded-full justify-center py-2 hover:bg-gray-50 transition-all cursor-pointer mb-4")
+          span(class="text-sm" id="email-label") Sign up with email
+        p(class="font-semibold text-sm") Already have an account?
+          a(class="text-blue-600 cursor-pointer" id="select-sign")
+            |  Sign in
+        h1=errors
+    if signup
+      include ../modals/signUp.pug
+    if signin
+      include ../modals/signIn.pug
+    if reset
+      include ../modals/reset.pug
+  script.
+    window.addEventListener('load', () => {
+      MicroModal.init({
+        onShow: modal => console.info(`${modal.id} is shown`), // [1]
+        onClose: console.log('cerrado'), // [2]
+        openTrigger: 'data-custom-open', // [3]
+        closeTrigger: 'data-custom-close', // [4]
+        openClass: 'is-open', // [5]
+        disableScroll: true, // [6]
+        disableFocus: false, // [7]
+        awaitOpenAnimation: false, // [8]
+        awaitCloseAnimation: false, // [9]
+        debugMode: true // [10]
+      });
+      MicroModal.show('modal')
+    })

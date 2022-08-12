@@ -8,6 +8,7 @@ import {
 import { User, UserDocument } from '../models';
 import { Request } from 'express';
 import dotenv from 'dotenv';
+import { CallbackError, Error } from 'mongoose';
 
 dotenv.config();
 
@@ -21,16 +22,14 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-/**
- * Sign in using Email and Password.
- */
+
 passport.use(
   new LocalStrategy(
     {
       usernameField: 'email'
     },
     (email, password, done) => {
-      User.findOne({ email: email.toLowerCase() }, (err: any, user: any) => {
+      User.findOne({ email: email.toLowerCase() }, (err: CallbackError, user: UserDocument) => {
         if (err) {
           return done(err);
         }
@@ -39,8 +38,7 @@ passport.use(
             message: `Email ${email} not found.`
           });
         }
-        user.matchPassword(password, (err: any, isMatch: boolean) => {
-          console.log(isMatch);
+        user.matchPassword(password, (err: Error, isMatch: boolean) => {
           if (err) {
             return done(err);
           }
@@ -74,7 +72,7 @@ passport.use(
       console.log('pasa por acá')
       User.findOne(
         { email: profile._json.email },
-        (err: any, existingEmailUser: any) => {
+        (err: CallbackError, existingEmailUser: UserDocument) => {
           if (err) {
             console.log(err, )
             return done(err);
@@ -93,7 +91,7 @@ passport.use(
             user.tokens.push({ kind: 'google', accessToken });
             user.profile.name = profile._json.name;
             user.profile.picture = profile._json.picture;
-            user.save((err: any) => {
+            user.save((err: CallbackError) => {
               done(err, user);
             });
           }

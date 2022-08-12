@@ -26,8 +26,9 @@ export type UserDocument = Document & {
 
 type matchPassword = (
   password: string,
-  cb: (err: any, isMatch: any) => {}
+  cb: (err: Error, isMatch: boolean) => void
 ) => void;
+
 type encryptPassword = (password: string) => Promise<string>;
 
 export interface AuthToken {
@@ -65,7 +66,7 @@ const encryptPassword: encryptPassword = async (password) => {
   return await bcryptjs.hash(password, salt);
 };
 
-const comparePassword: matchPassword = function (this: any, password, cb) {
+const comparePassword: matchPassword = function (this: UserDocument, password, cb) {
   return bcryptjs.compare(
     password,
     this.password,

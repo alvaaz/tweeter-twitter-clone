@@ -3,7 +3,7 @@ block header
     div(class="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center z-10 bg-black bg-opacity-60" tabindex='-1' data-micromodal-close='')
       div(class="bg-white w-[540px] rounded-lg overflow-y-auto")
         header(class="flex items-center px-4 py-3 border-b border-gray-300")
-          button(class="p-2 transition-all rounded-full hover:bg-gray-200 mr-6" aria-label='Close modal' data-micromodal-close='')
+          button(class="p-2 transition-all rounded-full hover:bg-gray-200 mr-6" aria-label='Close modal' data-micromodal-close)
             +Close
           h2#modal-1-title(class="mt-0 mb-0 font-semibold text-xl")=modalTitle
         form#modal-1-content(class="p-8" action=action method="POST" role='dialog' aria-modal='true' aria-labelledby='modal-1-title' encType='multipart/form-data')
