@@ -5,6 +5,7 @@ import { User, Tweet, UserDocument } from '../models';
 export const profile = {
   tweets: async (req: Request, res: Response) => {
     const user = await User.findOne({ username: req.params.username });
+    console.log(req.user, 'user');
     console.log(req.params.username, 'params');
     if (req.user && req.params.username === req.user.username) {
       res.render('users/profile', {
